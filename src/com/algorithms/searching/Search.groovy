@@ -13,7 +13,7 @@ abstract class Search {
     abstract int search(ArrayList array, int n, int x)
 
     String getName() {
-        String className = this.class.toString()
+        String className = this.class.name
         return className[className.lastIndexOf('.') + 1..-1]
     }
 
