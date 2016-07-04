@@ -4,7 +4,6 @@ abstract class Search {
 
     Search() {
         this.vallidate()
-        println "${this.class} algorithm validated"
     }
 
     abstract int search(ArrayList array, int n, int x)
@@ -19,6 +18,7 @@ abstract class Search {
     }
 
     def vallidate() {
+        assert search([], 1, 1) == -1
         assert search([9], 1, 1) == -1
         assert search([1], 1, 1) == 0
         assert search([1, 2], 2, 2) == 1

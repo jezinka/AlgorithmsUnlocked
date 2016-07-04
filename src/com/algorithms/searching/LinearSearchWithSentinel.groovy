@@ -5,6 +5,11 @@ class LinearSearchWithSentinel extends Search {
     int search(ArrayList array, int n, int x) {
 
         int answer = -1
+
+        if (!array) {
+            return -1
+        }
+
         int lastItem = array[n - 1]
         array[n] = x
 
