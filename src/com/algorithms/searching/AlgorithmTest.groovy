@@ -49,7 +49,9 @@ class AlgorithmTest {
         println 'Searching start:'
         algorithmTest.executeAndCountTime { new LinearSearch().search(data, x) }
         algorithmTest.executeAndCountTime { new BetterLinearSearch().search(data, x) }
-        algorithmTest.executeAndCountTime { new LinearSearchWithSentinel().search(data, x) }
+        algorithmTest.executeAndCountTime { new LinearWithSentinelSearch().search(data, x) }
         algorithmTest.executeAndCountTime { new RecursiveLinearSearch().search(data, x) }
+        algorithmTest.executeAndCountTime { new BinarySearch().search(data, x) }
+        algorithmTest.executeAndCountTime { new RecursiveBinarySearch().search(data, x) }
     }
 }

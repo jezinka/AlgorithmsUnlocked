@@ -3,8 +3,11 @@ package com.algorithms.searching
 class RecursiveLinearSearch extends Search {
 
     int search(ArrayList array, int n, int x, int i = 0) {
+
+        loopCounter += 1
+
         if (i > n) {
-            return -1
+            return NOT_FOUND
         }
 
         if (array[i] == x) {

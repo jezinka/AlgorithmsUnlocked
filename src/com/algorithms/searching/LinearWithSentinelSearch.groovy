@@ -1,13 +1,13 @@
 package com.algorithms.searching
 
-class LinearSearchWithSentinel extends Search {
+class LinearWithSentinelSearch extends Search {
 
     int search(ArrayList array, int n, int x) {
 
-        int answer = -1
+        int answer = NOT_FOUND
 
         if (!array) {
-            return -1
+            return answer
         }
 
         int lastItem = array[n - 1]
@@ -16,6 +16,7 @@ class LinearSearchWithSentinel extends Search {
         int i = 0
 
         while (array[i] != x) {
+            loopCounter += 1
             i += 1
         }
 
