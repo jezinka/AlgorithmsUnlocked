@@ -1,6 +1,7 @@
 package com.algorithms.searching
 
 import com.algorithms.AlgorithmsTest
+import org.reflections.Reflections
 
 class SearchAlgorithmsTest extends AlgorithmsTest {
 
@@ -23,11 +24,11 @@ class SearchAlgorithmsTest extends AlgorithmsTest {
         def (data, x) = searchAlgorithmsTest.prepareData()
 
         println 'Searching start:'
-        searchAlgorithmsTest.executeAndCountTime { new LinearSearch().search(data, x) }
-        searchAlgorithmsTest.executeAndCountTime { new BetterLinearSearch().search(data, x) }
-        searchAlgorithmsTest.executeAndCountTime { new LinearWithSentinelSearch().search(data, x) }
-        searchAlgorithmsTest.executeAndCountTime { new RecursiveLinearSearch().search(data, x) }
-        searchAlgorithmsTest.executeAndCountTime { new BinarySearch().search(data, x) }
-        searchAlgorithmsTest.executeAndCountTime { new RecursiveBinarySearch().search(data, x) }
+        Reflections r = new Reflections('com.algorithms')
+
+        r.getSubTypesOf(Search).each { searchClass ->
+            def searchAlgorithm = Class.forName(searchClass.name).newInstance()
+            searchAlgorithmsTest.executeAndCountTime { searchAlgorithm.search(data, x) }
+        }
     }
 }
