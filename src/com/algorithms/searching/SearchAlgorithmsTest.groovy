@@ -23,12 +23,33 @@ class SearchAlgorithmsTest extends AlgorithmsTest {
 
         def (data, x) = searchAlgorithmsTest.prepareData()
 
-        println 'Searching start:'
+        println "Searching item on position ${data.indexOf(x)}"
+        List<Map> scoreCard = []
+
+        println '\nSearching start:\n'
         Reflections r = new Reflections('com.algorithms')
 
         r.getSubTypesOf(Search).each { searchClass ->
-            def searchAlgorithm = Class.forName(searchClass.name).newInstance()
-            searchAlgorithmsTest.executeAndCountTime { searchAlgorithm.search(data, x) }
+            Search searchAlgorithm = Class.forName(searchClass.name).newInstance()
+            Map scoreCardItem = ['name': searchAlgorithm.name, 'item': x]
+
+            scoreCardItem << searchAlgorithmsTest.executeAndCountTime { searchAlgorithm.search(data, x) }
+
+            scoreCard << scoreCardItem
+        }
+
+        searchAlgorithmsTest.showResult(scoreCard)
+    }
+
+    List<Map> showResult(List scoreCard) {
+
+        int longestAlgorithmNameLength = scoreCard.collect { it.name.size() }.max()
+
+        scoreCard.sort { it.loopCounter }.each { searchAlgorithmResult ->
+            print searchAlgorithmResult.name.padRight(longestAlgorithmNameLength)
+            print " -> Item ${searchAlgorithmResult.item} ${searchAlgorithmResult.answer == -1 ? 'not ' : ''}found "
+            print "-> ${searchAlgorithmResult.loopCounter} steps"
+            println "-> ${searchAlgorithmResult.time} miliseconds"
         }
     }
 }

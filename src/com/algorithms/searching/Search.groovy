@@ -7,7 +7,7 @@ abstract class Search {
     int loopCounter
 
     Search() {
-        this.validate()
+        loopCounter = 0
     }
 
     abstract int search(ArrayList array, int n, int x)
@@ -17,19 +17,11 @@ abstract class Search {
         return className[className.lastIndexOf('.') + 1..-1]
     }
 
-    String search(ArrayList array, int x) {
-
-        GString message = "\n${this.name}: \n"
-
-        loopCounter = 0
+    Map<String, Integer> search(ArrayList array, int x) {
 
         int answer = search(array, array.size(), x)
-        if (answer == NOT_FOUND) {
-            message += "Item ${x} not found"
-        } else {
-            message += "Item ${x} found on the ${answer} position"
-        }
-        return message + " -> $loopCounter steps"
+
+        return [loopCounter: loopCounter, answer: answer]
     }
 
     def validate() {

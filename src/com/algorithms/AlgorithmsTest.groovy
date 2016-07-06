@@ -21,10 +21,13 @@ class AlgorithmsTest {
 
     def executeAndCountTime(Closure closure) {
         long start, end
+        Map result = [:]
 
         start = System.currentTimeMillis()
-        print closure()
+        result << closure()
         end = System.currentTimeMillis()
-        println " -> ${end - start} miliseconds"
+        result << ['time': end - start]
+
+        return result
     }
 }
