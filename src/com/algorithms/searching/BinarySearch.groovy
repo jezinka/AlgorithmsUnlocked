@@ -4,7 +4,7 @@ class BinarySearch extends Search {
 
     int search(ArrayList array, int n, int x) {
 
-        array.sort(true)
+        ArrayList sortedArray = array.sort(false)
 
         int p = 0
         int r = n
@@ -14,11 +14,11 @@ class BinarySearch extends Search {
 
             int q = Math.floor((p + r) / 2)
 
-            if (array[q] == x) {
+            if (sortedArray[q] == x) {
                 return q
             }
 
-            if (array[q] > x) {
+            if (sortedArray[q] > x) {
                 r = q - 1
             } else {
                 p = q + 1
