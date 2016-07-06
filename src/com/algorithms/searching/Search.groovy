@@ -7,7 +7,7 @@ abstract class Search {
     int loopCounter
 
     Search() {
-        this.vallidate()
+        this.validate()
     }
 
     abstract int search(ArrayList array, int n, int x)
@@ -32,7 +32,7 @@ abstract class Search {
         return message + " -> $loopCounter steps"
     }
 
-    def vallidate() {
+    def validate() {
         assert search([], 1, 1) == NOT_FOUND
         assert search([9], 1, 1) == NOT_FOUND
         assert search([1], 1, 1) == 0
