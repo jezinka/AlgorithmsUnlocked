@@ -14,18 +14,11 @@ class Result {
     @Override
     String toString(int longestAlgorithmNameLength) {
         StringBuffer buffer = new StringBuffer()
-        if (this.name) {
-            buffer << this.name.padRight(longestAlgorithmNameLength)
-        }
-        if (this.item && this.answer) {
-            buffer << " -> Item ${this.item} ${this.answer == -1 ? 'not ' : ''}found "
-        }
-        if (this.loopCounter) {
-            buffer << "-> ${this.loopCounter} steps"
-        }
-        if (this.time) {
-            buffer << "-> ${this.time} miliseconds"
-        }
+
+        buffer << this.name.padRight(longestAlgorithmNameLength)
+        buffer << " -> Item ${this.item} ${this.answer == -1 ? 'not ' : ''}found "
+        buffer << "-> ${this.loopCounter} steps"
+        buffer << "-> ${this.time} miliseconds"
 
         buffer << '\n'
         return buffer.toString()
