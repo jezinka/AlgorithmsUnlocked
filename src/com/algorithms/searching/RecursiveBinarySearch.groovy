@@ -4,7 +4,11 @@ class RecursiveBinarySearch extends Search {
 
     int search(ArrayList array, int r, int x, int p = 0) {
 
-        ArrayList sortedArray = array.sort(false)
+        ArrayList sortedArray = array
+
+        if (p == 0) {
+            sortedArray = array.sort(false)
+        }
 
         if (p > r) {
             return NOT_FOUND

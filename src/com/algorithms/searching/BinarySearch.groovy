@@ -23,6 +23,8 @@ class BinarySearch extends Search {
             } else {
                 p = q + 1
             }
+
+
         }
         return NOT_FOUND
     }
