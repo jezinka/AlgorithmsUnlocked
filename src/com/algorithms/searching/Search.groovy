@@ -11,7 +11,7 @@ abstract class Search {
 
     Search() {
         loopCounter = 0
-        result = new Result()
+        result = new Result(name: name)
     }
 
     abstract int search(ArrayList array, int n, int x)
@@ -22,6 +22,8 @@ abstract class Search {
     }
 
     void search(ArrayList array, int x) {
+
+        result.item = x
 
         int answer = search(array, array.size(), x)
 

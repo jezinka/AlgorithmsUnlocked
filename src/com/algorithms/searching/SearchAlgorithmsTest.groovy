@@ -33,12 +33,7 @@ class SearchAlgorithmsTest extends AlgorithmsTest {
         r.getSubTypesOf(Search).each { searchClass ->
             Search searchAlgorithm = Class.forName(searchClass.name).newInstance()
 
-            searchAlgorithm.result.with {
-                name = searchAlgorithm.name
-                item = x
-            }
-
-            searchAlgorithmsTest.executeAndCountTime { searchAlgorithm.search(data, x) }
+            searchAlgorithm.result.time = searchAlgorithmsTest.executeAndCountTime { searchAlgorithm.search(data, x) }
 
             results << searchAlgorithm.result
         }
