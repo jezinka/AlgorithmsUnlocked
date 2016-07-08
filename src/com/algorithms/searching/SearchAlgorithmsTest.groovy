@@ -1,6 +1,7 @@
 package com.algorithms.searching
 
 import com.algorithms.AlgorithmsTest
+import com.algorithms.Result
 import org.reflections.Reflections
 
 class SearchAlgorithmsTest extends AlgorithmsTest {
@@ -24,32 +25,24 @@ class SearchAlgorithmsTest extends AlgorithmsTest {
         def (data, x) = searchAlgorithmsTest.prepareData()
 
         println "Searching item on position ${data.indexOf(x)}"
-        List<Map> scoreCard = []
+        List<Result> results = []
 
         println '\nSearching start:\n'
         Reflections r = new Reflections('com.algorithms')
 
         r.getSubTypesOf(Search).each { searchClass ->
             Search searchAlgorithm = Class.forName(searchClass.name).newInstance()
-            Map scoreCardItem = ['name': searchAlgorithm.name, 'item': x]
 
-            scoreCardItem << searchAlgorithmsTest.executeAndCountTime { searchAlgorithm.search(data, x) }
+            searchAlgorithm.result.with {
+                name = searchAlgorithm.name
+                item = x
+            }
 
-            scoreCard << scoreCardItem
+            searchAlgorithmsTest.executeAndCountTime { searchAlgorithm.search(data, x) }
+
+            results << searchAlgorithm.result
         }
 
-        searchAlgorithmsTest.showResult(scoreCard)
-    }
-
-    List<Map> showResult(List scoreCard) {
-
-        int longestAlgorithmNameLength = scoreCard.collect { it.name.size() }.max()
-
-        scoreCard.sort { it.loopCounter }.each { searchAlgorithmResult ->
-            print searchAlgorithmResult.name.padRight(longestAlgorithmNameLength)
-            print " -> Item ${searchAlgorithmResult.item} ${searchAlgorithmResult.answer == -1 ? 'not ' : ''}found "
-            print "-> ${searchAlgorithmResult.loopCounter} steps"
-            println "-> ${searchAlgorithmResult.time} miliseconds"
-        }
+        searchAlgorithmsTest.showResult(results)
     }
 }

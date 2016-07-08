@@ -21,13 +21,19 @@ class AlgorithmsTest {
 
     def executeAndCountTime(Closure closure) {
         long start, end
-        Map result = [:]
 
         start = System.currentTimeMillis()
-        result << closure()
+        closure()
         end = System.currentTimeMillis()
-        result << ['time': end - start]
+        return end - start
+    }
 
-        return result
+    void showResult(List<Result> results) {
+
+        int longestAlgorithmNameLength = results.collect { it.name.size() }.max()
+
+        results.sort { it.loopCounter }.each { Result searchAlgorithmResult ->
+            print searchAlgorithmResult.toString(longestAlgorithmNameLength)
+        }
     }
 }

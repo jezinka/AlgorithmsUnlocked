@@ -1,13 +1,17 @@
 package com.algorithms.searching
 
+import com.algorithms.Result
+
 abstract class Search {
 
     static final int NOT_FOUND = -1
 
     int loopCounter
+    Result result
 
     Search() {
         loopCounter = 0
+        result = new Result()
     }
 
     abstract int search(ArrayList array, int n, int x)
@@ -17,11 +21,12 @@ abstract class Search {
         return className[className.lastIndexOf('.') + 1..-1]
     }
 
-    Map<String, Integer> search(ArrayList array, int x) {
+    void search(ArrayList array, int x) {
 
         int answer = search(array, array.size(), x)
 
-        return [loopCounter: loopCounter, answer: answer]
+        result.loopCounter = loopCounter
+        result.answer = answer
     }
 
     def validate() {
