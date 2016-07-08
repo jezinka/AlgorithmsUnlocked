@@ -1,9 +1,13 @@
 package com.algorithms
 
+import com.algorithms.searching.Search
+
 /**
  * Created by jezinka on 08.07.16.
  */
 class Result {
+
+    def testClass
 
     String name
     int loopCounter
@@ -16,7 +20,11 @@ class Result {
         StringBuffer buffer = new StringBuffer()
 
         buffer << this.name.padRight(longestAlgorithmNameLength)
-        buffer << " -> Item ${this.item} ${this.answer == -1 ? 'not ' : ''}found "
+
+        if (testClass instanceof Search) {
+            buffer << " -> Item ${this.item} ${this.answer == -1 ? 'not ' : ''}found "
+        }
+
         buffer << "-> ${this.loopCounter} steps"
         buffer << "-> ${this.time} miliseconds"
 

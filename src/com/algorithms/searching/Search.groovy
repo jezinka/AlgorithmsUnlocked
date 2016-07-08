@@ -11,7 +11,7 @@ abstract class Search {
 
     Search() {
         loopCounter = 0
-        result = new Result(name: name)
+        result = new Result(name: name, testClass: this)
     }
 
     abstract int search(ArrayList array, int n, int x)
