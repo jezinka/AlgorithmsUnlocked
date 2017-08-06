@@ -9,8 +9,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.algorithms</groupId>
-    <artifactId>algorithmsUnlocked</artifactId>
-    <name>algorithmsUnlocked project</name>
+    <artifactId>introductionToAlgorithms</artifactId>
+    <name>introductionToAlgorithms project</name>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
