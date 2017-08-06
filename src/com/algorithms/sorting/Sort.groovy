@@ -1,7 +1,6 @@
 package com.algorithms.sorting
 
 import com.algorithms.Result
-import junit.framework.Assert
 
 /**
  * Created by jezinka on 08.07.16.
@@ -17,8 +16,10 @@ abstract class Sort {
         result.name = this.name
     }
 
+    abstract ArrayList sortAlgorithm(ArrayList<Integer> arrayList)
+
     Map sort(ArrayList array) {
-        ArrayList sortedArray = sort(array, array.size())
+        ArrayList sortedArray = sortAlgorithm(array)
 
         assert validate(sortedArray)
     }

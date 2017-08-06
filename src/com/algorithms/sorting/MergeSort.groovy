@@ -5,7 +5,7 @@ package com.algorithms.sorting
  */
 class MergeSort extends Sort {
 
-    ArrayList sort(ArrayList array, int n) {
+    ArrayList sortAlgorithm(ArrayList array) {
         return sort(array, 0, array.size() - 1)
     }
 

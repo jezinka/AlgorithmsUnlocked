@@ -5,9 +5,9 @@ package com.algorithms.sorting
  */
 class InsertionSort extends Sort {
 
-    ArrayList sort(ArrayList array, int n) {
+    ArrayList sortAlgorithm(ArrayList array) {
 
-        for (int i = 1; i < n; i++) {
+        for (int i = 1; i < array.size(); i++) {
             int key = array[i]
             int j = i - 1
 

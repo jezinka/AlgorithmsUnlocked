@@ -1,36 +1,42 @@
 package com.algorithms.sorting
 
 import com.algorithms.AlgorithmsTest
+import com.algorithms.DataSet
 import com.algorithms.Result
-import com.algorithms.searching.Search
 import org.reflections.Reflections
 
 class SortAlgorithmsTest extends AlgorithmsTest {
 
     static void main(String[] args) {
 
-        List<Result> results = []
 
         SortAlgorithmsTest sortAlgorithmsTest = new SortAlgorithmsTest()
 
-        ArrayList data = sortAlgorithmsTest.prepareDataArray()
+        ArrayList<DataSet> dataSets = sortAlgorithmsTest.prepareDataSets()
 
-        println '\nSorting start:\n'
+        for (DataSet dataSet : dataSets) {
+            List<Result> results = []
+            println "\nSorting start: ${dataSet.dataDescription}\n"
 
-        Reflections r = new Reflections('com.algorithms')
+            Reflections r = new Reflections('com.algorithms')
 
-        r.getSubTypesOf(Sort).each { sortClass ->
-            Sort sortAlgorithm = Class.forName(sortClass.name).newInstance()
+            r.getSubTypesOf(Sort).each { sortClass ->
+                Sort sortAlgorithm = Class.forName(sortClass.name).newInstance()
 
-            sortAlgorithm.result.with {
-                name = sortAlgorithm.name
+                sortAlgorithm.result.with {
+                    name = sortAlgorithm.name
+                }
+
+                sortAlgorithm.result.time = sortAlgorithmsTest.executeAndCountTime {
+                    sortAlgorithm.sort(dataSet.data.clone())
+                }
+
+                results << sortAlgorithm.result
             }
 
-            sortAlgorithm.result.time = sortAlgorithmsTest.executeAndCountTime { sortAlgorithm.sort(data.clone()) }
-
-            results << sortAlgorithm.result
+            sortAlgorithmsTest.showResult(results)
         }
-
-        sortAlgorithmsTest.showResult(results)
     }
+
 }
+

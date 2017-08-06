@@ -5,12 +5,12 @@ package com.algorithms.sorting
  */
 class SelectionSort extends Sort {
 
-    ArrayList sort(ArrayList array, int n) {
+    ArrayList sortAlgorithm(ArrayList array) {
 
         int lowest
 
-        for (int i = 0; i < n - 1; i++) {
-            lowest = findMinInTable(array, i, n)
+        for (int i = 0; i < array.size() - 1; i++) {
+            lowest = findMinInTable(array, i, array.size())
 
             switchItemsInTable(array, i, lowest)
 

@@ -2,9 +2,9 @@ package com.algorithms
 
 class AlgorithmsTest {
 
-    int size = 200
+    int size = 2000
 
-    def prepareDataArray() {
+    ArrayList prepareDataArray() {
         def random = new Random()
         ArrayList array = []
 
@@ -17,6 +17,28 @@ class AlgorithmsTest {
         }
 
         return array
+    }
+
+    ArrayList<DataSet> prepareDataSets() {
+        ArrayList<DataSet> dataSets = []
+
+        DataSet randomDs = new DataSet()
+        randomDs.dataDescription = "Random data"
+        randomDs.data = prepareDataArray()
+        dataSets.add(randomDs)
+
+        DataSet sortedDs = new DataSet()
+        sortedDs.dataDescription = "Sorted data"
+        sortedDs.data = prepareDataArray().sort()
+        dataSets.add(sortedDs)
+
+        DataSet reverseDs = new DataSet()
+        reverseDs.dataDescription = "Reverse sorted data"
+        reverseDs.data = prepareDataArray().sort().reverse()
+        dataSets.add(reverseDs)
+        dataSets
+
+
     }
 
     def executeAndCountTime(Closure closure) {
@@ -36,4 +58,9 @@ class AlgorithmsTest {
             print searchAlgorithmResult.toString(longestAlgorithmNameLength)
         }
     }
+}
+
+class DataSet {
+    ArrayList data
+    String dataDescription
 }
