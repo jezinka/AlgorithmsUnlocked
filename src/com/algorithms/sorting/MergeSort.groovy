@@ -57,4 +57,10 @@ class MergeSort extends Sort {
             loopCounter++
         }
     }
+
+    static void main(String[] args) {
+        Sort sort = new MergeSort()
+
+        print sort.sortAlgorithm(defaultArray)
+    }
 }

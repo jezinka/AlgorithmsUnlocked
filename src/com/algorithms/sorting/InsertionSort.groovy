@@ -26,4 +26,10 @@ class InsertionSort extends Sort {
 
         return array
     }
+
+    static void main(String[] args) {
+        Sort sort = new InsertionSort()
+
+        print sort.sortAlgorithm(defaultArray)
+    }
 }

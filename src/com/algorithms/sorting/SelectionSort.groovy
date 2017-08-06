@@ -21,4 +21,10 @@ class SelectionSort extends Sort {
 
         return array
     }
+
+    static void main(String[] args) {
+        Sort sort = new SelectionSort()
+
+        print sort.sortAlgorithm(defaultArray)
+    }
 }
