@@ -15,3 +15,6 @@ groovy code examples from book 'Introduction to Algorithms' by Thomas Cormen (CL
 - Selection sort
 - Merge sort
 - Bubble sort
+
+*Structures*
+- Heap
