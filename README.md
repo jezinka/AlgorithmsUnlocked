@@ -1,6 +1,6 @@
 # Introduction to Algorithms
 
-groovy code examples from book 'Introduction to Algorithms' by Thomas Cormen (CLRS) and maybe oter fun stuff connected to the algorhitms
+groovy code examples from book 'Introduction to Algorithms' by Thomas Cormen (CLRS) and maybe other fun stuff connected to the algorithms
 
 *Searching*
 - Linear search
@@ -15,6 +15,7 @@ groovy code examples from book 'Introduction to Algorithms' by Thomas Cormen (CL
 - Selection sort
 - Merge sort
 - Bubble sort
+- Heap sort
 
 *Structures*
 - Heap
