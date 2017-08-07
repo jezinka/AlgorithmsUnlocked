@@ -2,7 +2,7 @@ package com.algorithms
 
 class AlgorithmsTest {
 
-    int size = 2000
+    int size = 200
 
     ArrayList prepareDataArray() {
         def random = new Random()
