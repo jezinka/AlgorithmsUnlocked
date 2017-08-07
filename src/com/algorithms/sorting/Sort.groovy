@@ -40,7 +40,7 @@ abstract class Sort {
         true
     }
 
-    void switchItemsInTable(ArrayList array, int src, int dst) {
+    static void switchItemsInTable(ArrayList<Integer> array, int src, int dst) {
         int tmp = array[src]
         array[src] = array[dst]
         array[dst] = tmp
