@@ -10,6 +10,10 @@ class Heap {
         buildMaxHeap(array)
     }
 
+    Integer getSize() {
+        this.heap.size()
+    }
+
     Integer parent(int i) {
         Math.floor(i / 2)
     }
@@ -23,14 +27,12 @@ class Heap {
     }
 
     void maxHeapify(int i) {
-        int largest
+        int largest = i
         int l = left(i)
         int r = right(i)
 
         if (l <= heap.size() && heap[l] > heap[i]) {
             largest = l
-        } else {
-            largest = i
         }
 
         if (r <= heap.size() && heap[r] > heap[largest]) {
@@ -43,16 +45,26 @@ class Heap {
         }
     }
 
-    @Override
-    String toString() {
-        return heap.toString()
-    }
-
     void buildMaxHeap(ArrayList<Integer> array) {
         this.heap = array
         for (int i = Math.floor(array.size() / 2); i >= 0; i--) {
             maxHeapify(i)
         }
+    }
+
+    void switchItems(int src, int dst) {
+        int tmp = heap[src]
+        heap[src] = heap[dst]
+        heap[dst] = tmp
+    }
+
+    Integer pop() {
+        heap.pop()
+    }
+
+    @Override
+    String toString() {
+        return heap.toString()
     }
 
     static void main(String[] args) {
