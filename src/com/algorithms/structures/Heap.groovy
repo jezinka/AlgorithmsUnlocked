@@ -6,8 +6,8 @@ class Heap {
 
     ArrayList<Integer> heap = []
 
-    Heap(int[] array) {
-        this.heap = buildMaxHeap(array)
+    Heap(ArrayList<Integer> array) {
+        buildMaxHeap(array)
     }
 
     Integer parent(int i) {
@@ -43,12 +43,16 @@ class Heap {
         }
     }
 
-    void buildMaxHeap(int[] array) {
+    @Override
+    String toString() {
+        return heap.toString()
+    }
+
+    void buildMaxHeap(ArrayList<Integer> array) {
         this.heap = array
         for (int i = Math.floor(array.size() / 2); i >= 0; i--) {
             maxHeapify(i)
         }
-        print heap
     }
 
     static void main(String[] args) {
