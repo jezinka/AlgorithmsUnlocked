@@ -9,7 +9,7 @@ class AlgorithmsTest {
         ArrayList array = []
 
         while (array.size() < this.size) {
-            int newItem = random.nextInt()
+            int newItem = random.nextInt(size * 5)
 
             if (!(newItem in array)) {
                 array << newItem
